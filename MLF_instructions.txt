@@ -49,7 +49,7 @@ format the plots, enter the following into ROOT once:
   cond_mess->SetShadowColor(0);
   cond_mess->SetTextSize(0.037);
   cond_mess->SetTextAlign(21);
-  cond_mess->AddText("#sqrt{s} = 8 TeV, L ~ 20 fb^{-1}");
+  cond_mess->AddText("#sqrt{s} = 8 TeV, L = 19.228 fb^{-1}");
 
   TPaveText *cms_mess = new TPaveText(0.20,0.7,0.5,0.87, "NDC");
   cms_mess->SetFillColor(0);

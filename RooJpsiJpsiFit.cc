@@ -97,13 +97,15 @@ RooJpsiJpsiFit::RooJpsiJpsiFit()  {
 
 RooJpsiJpsiFit::~RooJpsiJpsiFit()  { }
 
+
+
 void 
 RooJpsiJpsiFit::initDataVars() {
 
   cout << "RooJpsiJpsiFit: Initialization Data Variables" << endl ;
 
   FourMu_Mass = new RooRealVar("FourMu_Mass","FourMu_Mass",0.,999.);
-  Psi1To2Significance = new RooRealVar("Psi1To2Significance","Psi1To2Significance",0.,8);
+  Psi1To2Significance = new RooRealVar("Psi1To2Significance","Psi1To2Significance",0.,5);
   Psi1_Mass = new RooRealVar("Psi1_Mass","Psi1_Mass",2.85,3.35);
   Psi2_Mass = new RooRealVar("Psi2_Mass","Psi2_Mass",2.85,3.35);
   Psi1_CTxy = new RooRealVar("Psi1_CTxy","Psi1_CTxy",-0.03,0.1);
@@ -1852,7 +1854,7 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   //jpsi2_width_2 = new RooRealVar("jpsi2_width_2","",5.82996e-01);
   //frac_2 = new RooRealVar("frac_2","",4.47328e-01);
   //jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",0.056935);
-  jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",0.05,0.,2.9);
+  jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",0.05,0.,10.9);
   jpsi2_width_2 = new RooRealVar("jpsi2_width_2","",0.05,0.,0.9);
   frac_2 = new RooRealVar("frac_2","",0.362924);
   jpsi2_width_a = new RooFormulaVar("jpsi2_width_a","","@0*@1",RooArgList(*jpsi2_width_1,*jpsi2_width_2));
