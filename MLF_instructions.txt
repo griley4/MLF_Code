@@ -1,0 +1,83 @@
+//--- Basic Overview
+The MLF package is broken up into two parts: the initial fit, 
+and the creation of the sWeights (which also makes the fit plots 
+used for the paper).
+
+1) Initial fit.
+The initial fit (and numerous algorithms associated with it) are 
+accessed through the macro fit.C.  Simply modify the macro with 
+the filename to use as input, then uncomment the subroutine you
+want to run (and comment out the rest).  The subroutines are:
+
+PDFmaker -- determines the best fit pdf parameters, given a pdf
+shape as input.
+
+pureMCtoysGeneration -- runs numerous MC toys, where new events 
+are generated according to pdfs and refit to measure any 
+potential bias in the fit.
+
+fitData -- performs the MLF on data, floating as many parameters 
+as the user defines.  
+
+To run the macro, just open ROOT and run:
+  .X fit.C
+
+These subroutines are actually defined in RooJpsiJpsiFit.cc.  If 
+you want to make any modifications to them, make the appropriate
+changes in this file, save, then run "make" from command line.
+
+2) Determine sWeights and make formatted plots
+This step is performed by the macro SplotJpsiJpsi.C, but first 
+the appropriate pdfs must be edited (to reflect values found 
+for whatever was floated in the initial fit) and the appropriate 
+formatting must be set by setTDRStyle_modified.C.  Hence, do 
+the following in ROOT to run:
+
+  .L setTDRStyle_modified.C
+  .X SplotJpsiJpsi.C
+
+sWeights will be saved in the file weights.txt, along with some 
+additional info (for event identification) in the format:
+  run number    event number   4-mu mass    sWeight
+
+Fit plots will be displayed, but must be saved manually after 
+some additional formatting (so don't close them yet!).  To 
+format the plots, enter the following into ROOT once:
+
+  TPaveText *cond_mess = new TPaveText(0.20,0.7,0.5,0.87, "NDC");
+  cond_mess->SetFillColor(0);
+  cond_mess->SetShadowColor(0);
+  cond_mess->SetTextSize(0.037);
+  cond_mess->SetTextAlign(21);
+  cond_mess->AddText("#sqrt{s} = 8 TeV, L ~ 20 fb^{-1}");
+
+  TPaveText *cms_mess = new TPaveText(0.20,0.7,0.5,0.87, "NDC");
+  cms_mess->SetFillColor(0);
+  cms_mess->SetShadowColor(0);
+  cms_mess->SetTextSize(0.045);
+  cms_mess->SetTextAlign(21);
+  cms_mess->AddText("CMS");
+
+  TLegend *leg1 = new TLegend(0.65,0.73,0.86,0.87);
+  leg1->SetFillColor(kWhite);
+  leg1->SetLineColor(kWhite);
+  leg1->AddEntry("data","Data", "lpe");
+  leg1->AddEntry("all","All components","l");
+  leg1->AddEntry("sig","Prompt","l");
+  leg1->AddEntry("Bbkg","Nonprompt", "l");
+  leg1->AddEntry("bkg","J/#psi-combinatorial", "l");
+  leg1->AddEntry("bkg2","Purely combinatorial", "l");
+
+
+Then, one at a time for each plot, enter the following:
+
+  cms_mess->Draw("same");
+  cond_mess->Draw("same");
+  leg1->Draw("same");
+
+Resize the resulting textboxes and reposition them 
+manually in the first plot to show them, but the new 
+size and position will be retained for every subsequent 
+application (try to keep the same format for each).  
+Close a plot after you've saved it, and move 
+on to the next.
