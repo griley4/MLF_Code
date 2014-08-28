@@ -1821,6 +1821,8 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   //jpsi1_mass_1 = new RooRealVar("jpsi1_mass_2","",3.09313e+00);
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.08933e+00);
 
+  
+
   //jpsi1_mass_1 = new RooRealVar("jpsi1_mass_1","",3.09300);
   jpsi1_mass_1 = new RooRealVar("jpsi1_mass_2","",3.09079,3.0,3.1);
   // from SPS
