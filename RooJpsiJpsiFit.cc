@@ -105,7 +105,7 @@ RooJpsiJpsiFit::initDataVars() {
   cout << "RooJpsiJpsiFit: Initialization Data Variables" << endl ;
 
   FourMu_Mass = new RooRealVar("FourMu_Mass","FourMu_Mass",0.,999.);
-  Psi1To2Significance = new RooRealVar("Psi1To2Significance","Psi1To2Significance",0.,5);
+  Psi1To2Significance = new RooRealVar("Psi1To2Significance","Psi1To2Significance",0.,8);
   Psi1_Mass = new RooRealVar("Psi1_Mass","Psi1_Mass",2.85,3.35);
   Psi2_Mass = new RooRealVar("Psi2_Mass","Psi2_Mass",2.85,3.35);
   Psi1_CTxy = new RooRealVar("Psi1_CTxy","Psi1_CTxy",-0.03,0.1);
@@ -449,8 +449,8 @@ RooJpsiJpsiFit::PDFmaker(std::map<std::string, double>& filename, TString pdf) {
     double prob = TMath::Prob(chi2,nDOF);
     cout<<"Reduced #chi^{2}="<<chi2<<", #chi^{2} probability="<<prob<<endl;
 
-    c1->SaveAs("pic/JPsi1_Mass_2G.pdf");
-    c1->Close();
+    c1->SaveAs("pic/JPsi1_Mass_2G.png");
+//    c1->Close();
   }
 
   if ( pdf == "CBGaus_jpsi1"){
@@ -481,7 +481,7 @@ RooJpsiJpsiFit::PDFmaker(std::map<std::string, double>& filename, TString pdf) {
     double prob = TMath::Prob(chi2,nDOF);
     cout<<"Reduced #chi^{2}="<<chi2<<", #chi^{2} probability="<<prob<<endl;
 
-    c1->SaveAs("pic/JPsi1_Mass_CBGaus.pdf");
+    c1->SaveAs("pic/JPsi1_Mass_CBGaus.png");
     c1->Close();
   }
 
@@ -671,7 +671,7 @@ RooJpsiJpsiFit::PDFmaker(std::map<std::string, double>& filename, TString pdf) {
     cout<<"Reduced #chi^{2}="<<chi2<<", #chi^{2} probability="<<prob<<endl; 
 
     c1->SaveAs("pic/JPsi2_Mass_2G.pdf");
-    c1->Close();
+//    c1->Close();
   } 
 
   if ( pdf == "CBGaus_jpsi2"){
@@ -1822,7 +1822,7 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.08933e+00);
 
   //jpsi1_mass_1 = new RooRealVar("jpsi1_mass_1","",3.09300);
-  jpsi1_mass_1 = new RooRealVar("jpsi1_mass_2","",3.09, 3.07, 3.11);
+  jpsi1_mass_1 = new RooRealVar("jpsi1_mass_2","",3.09641);
   // from SPS
   //jpsi1_mass_1 = new RooRealVar("jpsi1_mass_1","",3.09315e+00);
   //jpsi1_width_1 = new RooRealVar("jpsi1_width_1","",4.90541e-02);
@@ -1835,13 +1835,13 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   //jpsi1_width_2 = new RooRealVar("jpsi1_width_2","",4.56886e-01);
   //frac_1 = new RooRealVar("frac_1","",1.80473e-01);
   //jpsi1_width_1 = new RooRealVar("jpsi1_width_1","",0.046952);
-  jpsi1_width_1 = new RooRealVar("jpsi1_width_1","",0.05,0.,0.9);
-  jpsi1_width_2 = new RooRealVar("jpsi1_width_2","",0.05,0.,0.9);
-  frac_1 = new RooRealVar("frac_1","",0.547353);
+  jpsi1_width_1 = new RooRealVar("jpsi1_width_1","",5.01275e-02);
+  jpsi1_width_2 = new RooRealVar("jpsi1_width_2","",5.33199e-01);
+  frac_1 = new RooRealVar("frac_1","",0.38255);
   jpsi1_width_a = new RooFormulaVar("jpsi1_width_a","","@0*@1",RooArgList(*jpsi1_width_1,*jpsi1_width_2));
 
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_1","",3.08938);
-  jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.09, 3.07, 3.11);
+  jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.09520);
   // from SPS
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_1","",3.08926e+00);
   //jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",4.92804e-02);
@@ -1854,9 +1854,9 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   //jpsi2_width_2 = new RooRealVar("jpsi2_width_2","",5.82996e-01);
   //frac_2 = new RooRealVar("frac_2","",4.47328e-01);
   //jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",0.056935);
-  jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",0.05,0.,10.9);
-  jpsi2_width_2 = new RooRealVar("jpsi2_width_2","",0.05,0.,0.9);
-  frac_2 = new RooRealVar("frac_2","",0.362924);
+  jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",8.16868e-02);
+  jpsi2_width_2 = new RooRealVar("jpsi2_width_2","",4.64286e-01);
+  frac_2 = new RooRealVar("frac_2","",9.22598e-02);
   jpsi2_width_a = new RooFormulaVar("jpsi2_width_a","","@0*@1",RooArgList(*jpsi2_width_1,*jpsi2_width_2));
 
   // from SPS
