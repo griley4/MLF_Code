@@ -105,7 +105,7 @@ RooJpsiJpsiFit::initDataVars() {
   cout << "RooJpsiJpsiFit: Initialization Data Variables" << endl ;
 
   FourMu_Mass = new RooRealVar("FourMu_Mass","FourMu_Mass",0.,999.);
-  Psi1To2Significance = new RooRealVar("Psi1To2Significance","Psi1To2Significance",0.,8);
+  Psi1To2Significance = new RooRealVar("Psi1To2Significance","Psi1To2Significance",0.,5);
   Psi1_Mass = new RooRealVar("Psi1_Mass","Psi1_Mass",2.85,3.35);
   Psi2_Mass = new RooRealVar("Psi2_Mass","Psi2_Mass",2.85,3.35);
   Psi1_CTxy = new RooRealVar("Psi1_CTxy","Psi1_CTxy",-0.03,0.1);
