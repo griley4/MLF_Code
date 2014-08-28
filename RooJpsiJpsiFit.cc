@@ -1822,7 +1822,7 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.08933e+00);
 
   //jpsi1_mass_1 = new RooRealVar("jpsi1_mass_1","",3.09300);
-  jpsi1_mass_1 = new RooRealVar("jpsi1_mass_2","",3.09641);
+  jpsi1_mass_1 = new RooRealVar("jpsi1_mass_2","",3.09079,3.0,3.1);
   // from SPS
   //jpsi1_mass_1 = new RooRealVar("jpsi1_mass_1","",3.09315e+00);
   //jpsi1_width_1 = new RooRealVar("jpsi1_width_1","",4.90541e-02);
@@ -1841,7 +1841,7 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   jpsi1_width_a = new RooFormulaVar("jpsi1_width_a","","@0*@1",RooArgList(*jpsi1_width_1,*jpsi1_width_2));
 
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_1","",3.08938);
-  jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.09520);
+  jpsi2_mass_1 = new RooRealVar("jpsi2_mass_2","",3.08747,3.0,3.1);
   // from SPS
   //jpsi2_mass_1 = new RooRealVar("jpsi2_mass_1","",3.08926e+00);
   //jpsi2_width_1 = new RooRealVar("jpsi2_width_1","",4.92804e-02);
@@ -2028,11 +2028,11 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   RooGaussModel resolution_core4("resolution_core4","",*Psi1To2Significance,*bkg_p5_distT,*bkg_p6_distT);
   //RooDecay bkg_distT2("bkg_distT2","",*Psi1To2Significance,*bkg_lambda2,resolution_core4,RooDecay::SingleSided);
 
-  bkg_co02 =  new RooRealVar("bkg_co02","", 6.58858e-01,0,1);
-  bkg_co12 =  new RooRealVar("bkg_co12","", 2.48596e-05,0,1);
-  bkg_flau2 = new RooRealVar("bkg_flau2","",5.33780e-01,0,1);
-  bkg_meanlandau2 = new RooRealVar("bkg_meanlandau2","",1.09999e+00,0,3);
-  bkg_sigmalandau2 = new RooRealVar("bkg_sigmalandau2","",4.64046e-01,0,1);
+  bkg_co02 =  new RooRealVar("bkg_co02","", 6.58858e-01);
+  bkg_co12 =  new RooRealVar("bkg_co12","", 2.48596e-05);
+  bkg_flau2 = new RooRealVar("bkg_flau2","",5.33780e-01);
+  bkg_meanlandau2 = new RooRealVar("bkg_meanlandau2","",1.09999e+00);
+  bkg_sigmalandau2 = new RooRealVar("bkg_sigmalandau2","",4.64046e-01);
   RooChebychev bkg_polyshape2("bkg_polyshape2","",*Psi1To2Significance,RooArgList(*bkg_co02,*bkg_co12));
   RooLandau bkg_landau2("bkg_landau2", "bkg_landau2", *Psi1To2Significance, *bkg_meanlandau2, *bkg_sigmalandau2);
   RooAddPdf bkg_distT2("bkg_distT2","", RooArgList(bkg_landau2,bkg_polyshape2),RooArgList(*bkg_flau2));
@@ -2041,7 +2041,7 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
 
   // fraction for the J/psi-flat flat-J/psi ratio (Andrew: I think this is defined as (# J/psi-flat)/(# J/psi-flat + # flat-J/psi))
   //bkg_frac_5 = new RooRealVar("bkg_frac_5","",7.72600e-01,0.,1.); // for initial fit
-  bkg_frac_5 = new RooRealVar("bkg_frac_5","",5.95167e-01,0,1); // for eff_cut dataset
+  bkg_frac_5 = new RooRealVar("bkg_frac_5","",5.95167e-01); // for eff_cut dataset
   //bkg_frac_5 = new RooRealVar("bkg_frac_5","",6.47958e-01); // for all dataset
   RooAddPdf bkg_model("bkg_model","",RooArgList(bkg_mass1,bkg_mass2),RooArgList(*bkg_frac_5));
 

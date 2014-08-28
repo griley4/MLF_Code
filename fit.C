@@ -81,8 +81,8 @@ filename["./Input_To_Fit_pT_Sort_2012_Data_pT_Select.root"] = 1.;
   //  fit.PDFmaker(filename,"plotM_jpsi1");
 
   //  J/psi Mass pdfs
-  //  fit.PDFmaker(filename,"2G_jpsi1");
-  //  fit.PDFmaker(filename,"2G_jpsi2");
+// fit.PDFmaker(filename,"2G_jpsi1");
+//  fit.PDFmaker(filename,"2G_jpsi2");
   //  fit.PDFmaker(filename,"CBGaus_jpsi1");
   //  fit.PDFmaker(filename,"CBGaus_jpsi2");
 
@@ -120,6 +120,6 @@ filename["./Input_To_Fit_pT_Sort_2012_Data_pT_Select.root"] = 1.;
   //  fit.PDFmaker(filename,"GCTxy2");
 
   //fit.pureMCtoysGeneration();
-  fit.fitData(filename);
+fit.fitData(filename);
 
 }
