@@ -2030,11 +2030,11 @@ RooJpsiJpsiFit::fitData(std::map<std::string, double> & dataFile) {
   RooGaussModel resolution_core4("resolution_core4","",*Psi1To2Significance,*bkg_p5_distT,*bkg_p6_distT);
   //RooDecay bkg_distT2("bkg_distT2","",*Psi1To2Significance,*bkg_lambda2,resolution_core4,RooDecay::SingleSided);
 
-  bkg_co02 =  new RooRealVar("bkg_co02","", 6.58858e-01,0,2);
-  bkg_co12 =  new RooRealVar("bkg_co12","", 2.48596e-05,0,2);
-  bkg_flau2 = new RooRealVar("bkg_flau2","",5.33780e-01,0,2);
-  bkg_meanlandau2 = new RooRealVar("bkg_meanlandau2","",1.09999e+00,0,2);
-  bkg_sigmalandau2 = new RooRealVar("bkg_sigmalandau2","",4.64046e-01,0,2);
+  bkg_co02 =  new RooRealVar("bkg_co02","", 6.58858e-01);
+  bkg_co12 =  new RooRealVar("bkg_co12","", 2.48596e-05);
+  bkg_flau2 = new RooRealVar("bkg_flau2","",5.33780e-01);
+  bkg_meanlandau2 = new RooRealVar("bkg_meanlandau2","",1.09999e+00);
+  bkg_sigmalandau2 = new RooRealVar("bkg_sigmalandau2","",4.64046e-01);
   RooChebychev bkg_polyshape2("bkg_polyshape2","",*Psi1To2Significance,RooArgList(*bkg_co02,*bkg_co12));
   RooLandau bkg_landau2("bkg_landau2", "bkg_landau2", *Psi1To2Significance, *bkg_meanlandau2, *bkg_sigmalandau2);
   RooAddPdf bkg_distT2("bkg_distT2","", RooArgList(bkg_landau2,bkg_polyshape2),RooArgList(*bkg_flau2));
